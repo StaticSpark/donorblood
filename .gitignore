@@ -1,0 +1,11 @@
+!.gitkeep
+**/node_modules/
+Video
+Code/client/dist
+tmp
+.DS_Store
+.idea
+*.tar
+*.tar.xz
+*.zip
+

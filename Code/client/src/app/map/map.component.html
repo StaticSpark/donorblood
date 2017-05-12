@@ -1,0 +1,51 @@
+<div class="map">
+  <esri4-map [mapProperties]="mapProperties" [mapViewProperties]="mapViewProperties" (mapInit)="onMapInit($event)"></esri4-map>
+</div>
+
+<toaster-container></toaster-container>
+
+<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" #modal>
+    <form #modalForm="ngForm">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">Blood Donor</h4>
+        </modal-header>
+        <modal-body>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel" placeholder="John">
+                <p *ngIf="firstName.errors?.required">First name can not be blank</p>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel" placeholder="Doe">
+                <p *ngIf="lastName.errors?.required">Last name can not be blank</p>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" required [(ngModel)]="model.email" name="email" #email="ngModel" email placeholder="johndoe@example.com">
+                <p *ngIf="email.errors?.email">email is not valid</p>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="text" class="form-control" required [(ngModel)]="model.contactNumber" name="contactNumber" #contactNumber="ngModel" pattern="(\+|[0]{2})\d{2}\s{1}\d{3}\s{1}\d{4}\s{1}\d{3}" placeholder="+86 123 4567 890">
+                <p *ngIf="contactNumber.errors?.pattern">phone format is not valid</p>
+            </div>
+            <div class="form-group">
+                <label for="bloodGroup">Blood Group</label>
+                <select class="form-control" required [(ngModel)]="model.bloodGroup" name="bloodGroup" id="bloodGroup">
+				   <option>A</option>
+				   <option>B</option>
+				   <option>AB</option>
+				   <option>O</option>
+				</select>
+            </div>
+            <div class="form-group">
+            	<p>{{errorMessage}}</p>
+            </div>
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">Cancel</button>
+            <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="save()">Save</button>
+        </modal-footer>
+    </form>
+</modal>

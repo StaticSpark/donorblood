@@ -1,0 +1,18 @@
+{
+  "mm": {
+    "name": "mm",
+    "connector": "memory"
+  },
+  "db": {
+    "name": "db",
+    "url":"${MONGODB_URL}",
+    "connector": "mongodb",
+    "host": "127.0.0.1",
+    "port": 27017,
+    "database": "crossover"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  }
+}

@@ -1,0 +1,47 @@
+/* tslint:disable:no-unused-variable */
+
+import { TestBed, async } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { SDKBrowserModule } from '../shared/sdk/index';
+import { CommonModule } from '@angular/common';
+import { CustomFormsModule } from 'ng2-validation';
+import { ActivatedRoute } from '@angular/router';
+
+import { DonorComponent } from './donor.component';
+
+describe('DonorComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        DonorComponent
+      ],
+      imports: [
+        FormsModule,
+        CustomFormsModule,
+        CommonModule,
+        SDKBrowserModule.forRoot()
+      ],
+      providers:[ActivatedRoute]
+    });
+    TestBed.compileComponents();
+  });
+
+  it('should create the component', async(() => {
+    const fixture = TestBed.createComponent(DonorComponent);
+    const component = fixture.debugElement.componentInstance;
+    expect(component).toBeTruthy();
+  }));
+
+  it(`should have as model to null`, async(() => {
+    const fixture = TestBed.createComponent(DonorComponent);
+    const component = fixture.debugElement.componentInstance;
+    expect(component.model).toEqual(null);
+  }));
+
+  it('should has a donor h2 tag', async(() => {
+    const fixture = TestBed.createComponent(DonorComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Donor');
+  }));
+});

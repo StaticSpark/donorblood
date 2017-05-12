@@ -1,0 +1,53 @@
+{
+  "name": "Donor",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "strict":true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": false
+    },
+    "contactNumber": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "bloodGroup": {
+      "type": "string",
+      "required": true
+    },
+    "ip": {
+      "type": "string",
+      "required": false
+    },
+    "address": {
+      "type": "string",
+      "required": false
+    },
+    "location": {
+      "type": "GeoPoint",
+      "required": true
+    }
+  },
+  "scope": {
+    "limit": 1000
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {},
+  "mixins": {
+    "FireBroadcast":true
+  }
+}

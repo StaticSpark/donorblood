@@ -1,0 +1,63 @@
+/* tslint:disable:no-unused-variable */
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TestBed, async } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { SDKBrowserModule } from '../shared/sdk/index';
+import { CommonModule } from '@angular/common';
+import { EsriLoaderService } from 'angular2-esri-loader';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { CustomFormsModule } from 'ng2-validation';
+import { ToasterModule } from 'angular2-toaster';
+
+import { MapComponent } from './map.component';
+
+@Component({
+  selector: 'esri4-map',
+  template: ''
+})
+class Esri4MapSubComponent {
+  @Input() mapProperties:any;
+  @Input() mapViewProperties:any;
+  @Input() webMapProperties:any;
+  @Output() mapInit = new EventEmitter();
+}
+
+describe('MapComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        MapComponent,
+        Esri4MapSubComponent
+      ],
+      imports: [
+        FormsModule,
+        CustomFormsModule,
+        CommonModule,
+        Ng2Bs3ModalModule,
+        ToasterModule,
+        SDKBrowserModule.forRoot()
+      ],
+      providers: [EsriLoaderService]
+    });
+    TestBed.compileComponents();
+  });
+
+  it('should create the component', async(() => {
+    const fixture = TestBed.createComponent(MapComponent);
+    const component = fixture.debugElement.componentInstance;
+    expect(component).toBeTruthy();
+  }));
+
+  it(`should have as mapProperties.basemap 'streets'`, async(() => {
+    const fixture = TestBed.createComponent(MapComponent);
+    const component = fixture.debugElement.componentInstance;
+    expect(component.mapProperties.basemap).toEqual('streets');
+  }));
+
+  it('should render map in a div', async(() => {
+    const fixture = TestBed.createComponent(MapComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div.map').textContent).toContain('esri4-map');
+  }));
+});
