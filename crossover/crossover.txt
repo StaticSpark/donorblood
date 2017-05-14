@@ -1,0 +1,29 @@
+https://developers.arcgis.com/javascript/latest/sample-code/widgets-locate/index.html
+https://developers.arcgis.com/javascript/latest/sample-code/widgets-track-basic/index.html
+
+https://strongloop.com/strongblog/node-js-api-geolocation/
+https://loopback.io/doc/en/lb2/Where-filter.html
+
+http://tomwayson.com/2016/11/27/using-the-arcgis-api-for-javascript-in-applications-built-with-webpack/
+
+{"where":{"location":{"near":{"lat":0,"lng":0},"maxDistance":1000000000000,"unit":"meters"}}}
+
+
+Todo:
+
+1.how to get client ip address?
+
+var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+http://stackoverflow.com/questions/10849687/express-js-how-to-get-remote-client-address
+
+in remote hook? operation hook? to get ctx.req ...
+
+2.edit/remove page
+
+3. unit test
+
+4. readme and design doc
+
+5. demo deploy
+
+6. screen recording
