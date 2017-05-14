@@ -1,27 +1,18 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { SDKBrowserModule } from '../shared/sdk/index';
-import { CommonModule } from '@angular/common';
-import { CustomFormsModule } from 'ng2-validation';
-import { ActivatedRoute } from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
+import {AppModule} from '../app.module';
 
 import { DonorComponent } from './donor.component';
 
 describe('DonorComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        DonorComponent
-      ],
       imports: [
-        FormsModule,
-        CustomFormsModule,
-        CommonModule,
-        SDKBrowserModule.forRoot()
+        AppModule
       ],
-      providers:[ActivatedRoute]
+      providers:[{provide: APP_BASE_HREF, useValue: '/'}]
     });
     TestBed.compileComponents();
   });

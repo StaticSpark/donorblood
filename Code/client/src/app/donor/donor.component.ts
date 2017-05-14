@@ -10,7 +10,7 @@ import { DonorApi } from '../shared/sdk/services';
   styleUrls: ['./donor.component.css']
 })
 export class DonorComponent implements OnInit {
-  model: Donor;
+  model: Donor = null;
   errorMessage:string = "";
 
   save(){

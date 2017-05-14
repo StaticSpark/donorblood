@@ -1,13 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { SDKBrowserModule } from '../shared/sdk/index';
-import { CommonModule } from '@angular/common';
-import { EsriLoaderService } from 'angular2-esri-loader';
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { CustomFormsModule } from 'ng2-validation';
-import { ToasterModule } from 'angular2-toaster';
+import {APP_BASE_HREF} from '@angular/common';
+import {AppModule} from '../app.module';
 
 import { MapComponent } from './map.component';
 
@@ -26,18 +21,12 @@ describe('MapComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        MapComponent,
         Esri4MapSubComponent
       ],
       imports: [
-        FormsModule,
-        CustomFormsModule,
-        CommonModule,
-        Ng2Bs3ModalModule,
-        ToasterModule,
-        SDKBrowserModule.forRoot()
+        AppModule
       ],
-      providers: [EsriLoaderService]
+      providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     });
     TestBed.compileComponents();
   });
@@ -58,6 +47,6 @@ describe('MapComponent', () => {
     const fixture = TestBed.createComponent(MapComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div.map').textContent).toContain('esri4-map');
+    expect(compiled.querySelector('div.map').innerHTML).toContain('esri4-map');
   }));
 });
