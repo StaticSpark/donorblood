@@ -2,18 +2,18 @@ version: '2'
 
 services:
 
-	web:
-	  build: .
-          image: web
-	  ports:
-	    - "3000:3000"
-	  links:
-	    - mongo
-	  environment:
-	    - MONGODB_URL=mongodb://mongo:27017/crossover
+      web:
+        build: .
+        image: web
+        ports:
+          - "3000:3000"
+        links:
+          - mongo
+        environment:
+          - MONGODB_URL=mongodb://mongo:27017/crossover
 
-	mongo:
-	  image: mongo
-	  expose:
-	    - "27017"
+      mongo:
+        image: mongo
+        expose:
+          - "27017"
 

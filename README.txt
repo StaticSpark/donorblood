@@ -6,9 +6,10 @@
 
 2.Set up demo
 1) Open terminal, cd to "Code" folder, run "npm install"
-2) Cd to "Code/client" folder, run "npm install && ng build --env=demo"
-3) return back to "Code" folder, run "npm start"
-4) In browser, open http://localhost:3000/, you should can view a map
+2) then apply a patch, run "cp patches/FireLoop.js node_modules/@mean-expert/loopback-component-realtime/dist/modules/FireLoop.js"
+3) Cd to "Code/client" folder, run "npm install && ng build --env=demo"
+4) return back to "Code" folder, run "npm start"
+5) In browser, open http://localhost:3000/, you should can view a map
 
 3.Dev,auto recompile,restart,and reloading
 1) npm install -g @mean-expert/fireloop@1.0.0-beta.2.4

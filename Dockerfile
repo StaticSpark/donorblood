@@ -23,7 +23,7 @@ ADD ./Code   /opt/donorblood
 RUN cd /opt/donorblood && npm install
 RUN cd /opt/donorblood/client && npm install
 RUN cd /opt/donorblood/client && ng build --env=demo
-RUN cd /opt/donorblood
+RUN cd /opt/donorblood && cp patches/FireLoop.js node_modules/@mean-expert/loopback-component-realtime/dist/modules/FireLoop.js
 
 WORKDIR /opt/donorblood
 # Start donorblood
