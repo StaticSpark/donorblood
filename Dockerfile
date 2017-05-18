@@ -19,6 +19,8 @@ RUN npm install -g @angular/cli@1.0.0
 
 
 ADD ./Code   /opt/donorblood
+RUN rm -fr /opt/donorblood/node_modules
+RUN rm -fr /opt/donorblood/client/node_modules
 
 RUN cd /opt/donorblood && npm install
 RUN cd /opt/donorblood/client && npm install
